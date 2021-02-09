@@ -31,8 +31,10 @@ function setup() {
 	mango3 = new Mango(800,280,15);
 	mango4 = new Mango(1000,250,15);
 	mango5 = new Mango(670,300,15);
+	
 	stone = new Stone(150,550,15);
-	//boyShot = new Shot(stone.body,{x:150,y:500});
+	attach = new Throw (stone.body,{x:150,y:500});
+    //attach= new Throw
 	Engine.run(engine);
   
 }
@@ -52,7 +54,8 @@ function draw() {
   mango4.display();
   mango5.display();
   stone.display();
-  //boyShot.display();
+
+  attach.display();
   detectCollision(stone,mango1);
   detectCollision(stone,mango2);
   detectCollision(stone,mango3);
@@ -83,7 +86,7 @@ function keyPressed(){
 
 	if(keyCode === 32){
 		Matter.Body.setPosition(stone.body,{x:150,y:550})
-		//boyShot.attach(stone.body);
+		attach(stone.body);
 	}
 }
 
